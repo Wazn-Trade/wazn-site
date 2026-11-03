@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wazn Screen — الفلترة الشرعية لأسهم البورصة المصرية | وزن</title>
+  <meta name="description" content="Wazn Screen بيفلتر أسهم البورصة المصرية شرعيًا على أساس مؤشر EGX33 Shariah ومعايير AAOIFI، ويحسب التطهير والزكاة، كـ API وكـ MCP server لأي AI agent.">
+  <link rel="canonical" href="https://wazn.trade/">
+  <link rel="alternate" hreflang="ar" href="https://wazn.trade/">
+  <link rel="alternate" hreflang="en" href="https://wazn.trade/en/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wazn.trade/">
+  <meta property="og:title" content="Wazn Screen — اعرف السهم متوافق ولا لأ، بالدليل">
+  <meta property="og:description" content="فلترة شرعية شفافة لأسهم EGX33، وحساب التطهير والزكاة، كـ API وMCP.">
+  <meta property="og:image" content="https://wazn.trade/assets/img/og.png">
+  <meta property="og:locale" content="ar_EG">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0E1B2C">
+  <link rel="icon" href="/assets/img/wazn-favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/ReadexPro-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/IBMPlexSansArabic-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script>try{if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}catch(e){}</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="/" aria-label="وزن — الصفحة الرئيسية">
+      <img class="logo-light" src="/assets/img/wazn-logo-ar.svg" alt="وزن" width="120" height="30">
+      <img class="logo-dark" src="/assets/img/wazn-logo-ar-reverse.svg" alt="وزن" width="120" height="30">
+    </a>
+    <ul>
+      <li><a href="#why">ليه Wazn Screen</a></li>
+      <li><a href="#how">بيشتغل إزاي</a></li>
+      <li><a href="#dev">للمطورين</a></li>
+      <li><a href="#faq">أسئلة</a></li>
+    </ul>
+    <div class="nav-end">
+      <a class="lang" href="/en/" hreflang="en" lang="en">English</a>
+      <a class="wz-btn wz-btn--primary wz-btn--sm" href="#join">انضم لقائمة الانتظار</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="pill">قريبًا · Early access</span>
+        <h1>اعرف السهم <em>متوافق</em> ولا لأ.<br>بالدليل، مش بالكلام.</h1>
+        <p class="lead">Wazn Screen بيفلتر أسهم البورصة المصرية شرعيًا على أساس مؤشر <strong>EGX33 Shariah</strong> ومعايير <strong>AAOIFI</strong>، وبيحسب لك التطهير والزكاة. ومتاح كـ API وكـ MCP server يشتغل مع Claude وأي AI agent.</p>
+        <div class="cta">
+          <a class="wz-btn wz-btn--primary" href="#join">انضم لقائمة الانتظار</a>
+          <a class="wz-btn wz-btn--secondary" href="https://github.com/Wazn-Trade" rel="noopener">الكود على GitHub</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="result" role="img" aria-label="مثال لنتيجة فلترة سهم">
+          <div class="result-head">
+            <span class="mono">ACME</span>
+            <span class="wz-badge wz-badge--watch">تحت المراقبة</span>
+          </div>
+          <div class="result-body">
+            <div class="ratio"><span>عضو في EGX33 Shariah</span><span class="mono">✓ H2 2026</span></div>
+            <div class="ratio"><span>الدين الربوي ÷ القيمة السوقية</span><span class="mono">27.4% / 30%</span><div class="meter"><span style="width:91%"></span><i style="inset-inline-start:100%"></i></div></div>
+            <div class="ratio"><span>النقدية الربوية ÷ القيمة السوقية</span><span class="mono">8.1% / 30%</span><div class="meter"><span style="width:27%"></span><i style="inset-inline-start:100%"></i></div></div>
+            <div class="ratio"><span>الإيراد غير المتوافق ÷ الإيراد</span><span class="mono">1.2% / 5%</span><div class="meter"><span style="width:24%"></span><i style="inset-inline-start:100%"></i></div></div>
+          </div>
+          <div class="result-foot"><span>السبب: الدين قريب من حد 30%. مفيش شراء جديد لحد المراجعة.</span><span class="mono">Q3 2026</span></div>
+        </div>
+        <p class="example-note">مثال توضيحي بسهم وهمي (ACME)، مش تقييم لأي شركة حقيقية.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">ليه Wazn Screen</p>
+        <h2>الحكم الشرعي على السهم لازم يكون قابل للمراجعة.</h2>
+        <p>أغلب القوايم الشرعية بتديك «حلال» أو «حرام» من غير ما تقول ليه، ولا إمتى اتحدّثت، ولا على أي معيار. إحنا بنوريك الحسبة نفسها.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <svg class="glyph" viewBox="0 0 40 40" aria-hidden="true"><rect class="i" x="6" y="14" width="6" height="12"/><rect class="i" x="17" y="6" width="6" height="20"/><rect class="i" x="28" y="10" width="6" height="16"/><rect class="b" x="3" y="26" width="34" height="3"/><path class="b" d="M20 29 L14 37 L26 37Z"/></svg>
+          <h3>كل حكم معاه سببه</h3>
+          <p>النسب المالية، والحدود، ورقم الصفحة في القوائم المالية، والمعيار اللي اتطبق. مفيش «ثق فينا».</p>
+        </article>
+        <article class="card">
+          <svg class="glyph" viewBox="0 0 40 40" aria-hidden="true"><rect class="i" x="4" y="6" width="32" height="3"/><rect class="i" x="4" y="18" width="32" height="3"/><rect class="i" x="4" y="30" width="20" height="3"/><rect class="b" x="28" y="26" width="8" height="11"/></svg>
+          <h3>صحيح في أي تاريخ</h3>
+          <p>بيانات <span class="mono">point-in-time</span>: بيتحدّث مع كل مراجعة نصف سنوية لـ EGX33 ومع كل نتايج ربع سنوية. وتقدر تسأل: كان السهم ده متوافق يوم كذا؟</p>
+        </article>
+        <article class="card">
+          <svg class="glyph" viewBox="0 0 40 40" aria-hidden="true"><rect class="i" x="4" y="8" width="14" height="10"/><rect class="i" x="22" y="22" width="14" height="10"/><rect class="b" x="17" y="12" width="10" height="3"/><rect class="b" x="25" y="12" width="3" height="11"/></svg>
+          <h3>مبني للـ agents</h3>
+          <p>REST API لتطبيقك، وMCP server يخلّي Claude أو أي AI agent يفحص محفظتك شرعيًا من المحادثة.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">بيشتغل إزاي</p>
+        <h2>ثلاث طبقات، والسهم لازم يعدّي عليهم كلهم.</h2>
+        <p>أي شك في البيانات بيرفض السهم. القاعدة إننا نرفض لو مش متأكدين، ومش بنعدّي حاجة بالافتراض.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>عضوية EGX33 Shariah</h3><p>السهم لازم يكون في آخر مراجعة للمؤشر في التاريخ اللي بتسأل عنه. لو خرج منه، بيتعلّم «مستبعد» فورًا.</p></li>
+        <li><h3>نسب AAOIFI من القوائم المالية</h3><p>الدين الربوي، والنقدية الربوية، والإيراد غير المتوافق، محسوبين من آخر قوائم منشورة. ولو سهم قرب من الحد، بيتعلّم «تحت المراقبة» قبل المراجعة الجاية.</p></li>
+        <li><h3>الحكم والتطهير</h3><p>النتيجة (متوافق، أو تحت المراقبة، أو مستبعد) ومعاها الأسباب، ونسبة التطهير اللي تطبقها على التوزيعات.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="dev">
+    <div class="wrap dev">
+      <div>
+        <p class="eyebrow">للمطورين</p>
+        <h2>سطر واحد في أي agent.</h2>
+        <p class="lead">ضيف Wazn Screen كـ MCP server في Claude Desktop أو Claude Code أو أي client بيدعم MCP، أو استخدم الـ REST API مباشرة.</p>
+        <ul>
+          <li>أدوات: <span class="mono">screen_stock</span>، <span class="mono">sharia_universe</span>، <span class="mono">purification_calc</span>، <span class="mono">zakat_calc</span></li>
+          <li>كل رد فيه <span class="mono">as_of</span> و<span class="mono">source</span> و<span class="mono">reasons</span></li>
+          <li>Read-only: مفيش أي صلاحية تداول، ومفيش أي توصيات شراء</li>
+        </ul>
+        <p class="example-note" style="text-align:start">Preview: ده شكل الـ API المخطط، ولسه في التطوير.</p>
+      </div>
+      <div>
+        <div class="code">
+          <div class="code-head"><span>claude_desktop_config.json</span><span>MCP</span></div>
+<pre>{
+  <span class="k">"mcpServers"</span>: {
+    <span class="k">"wazn-screen"</span>: {
+      <span class="k">"command"</span>: <span class="s">"uvx"</span>,
+      <span class="k">"args"</span>: [<span class="s">"wazn-screen-mcp"</span>]
+    }
+  }
+}</pre>
+        </div>
+        <div class="code">
+          <div class="code-head"><span>REST</span><span>GET /v1/screen/{symbol}</span></div>
+<pre><span class="c">$</span> curl https://api.wazn.trade/v1/screen/ACME
+
+{
+  <span class="k">"symbol"</span>: <span class="s">"ACME"</span>,
+  <span class="k">"status"</span>: <span class="s">"watchlist"</span>,
+  <span class="k">"egx33_member"</span>: true,
+  <span class="k">"ratios"</span>: { <span class="k">"debt"</span>: 0.274, <span class="k">"interest_cash"</span>: 0.081, <span class="k">"non_compliant_income"</span>: 0.012 },
+  <span class="k">"purification_ratio"</span>: 0.012,
+  <span class="k">"reasons"</span>: [<span class="s">"debt within 3pp of the 30% limit"</span>],
+  <span class="k">"as_of"</span>: <span class="s">"2026-11-03"</span>,
+  <span class="k">"source"</span>: <span class="s">"EGX33 review H2 2026; Q3 2026 statements"</span>
+}</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Wazn Purify</p>
+        <h2>التطهير والزكاة، محسوبين مش متقدّرين.</h2>
+        <p class="lead">كل توزيع بيوصلك بيتحسب له مبلغ التطهير من نسبة الإيراد غير المتوافق في الشركة. وكمان زكاة المحفظة يوم الحول. والطريقة مكتوبة، والمعيار اللي اخترته محفوظ.</p>
+      </div>
+      <div class="calc" aria-label="مثال لحساب التطهير">
+        <div class="calc-row"><span>التوزيعات المستلمة من ACME</span><span class="mono">10,000.00 EGP</span></div>
+        <div class="calc-row"><span>الإيراد غير المتوافق ÷ إجمالي الإيراد</span><span class="mono">1.2%</span></div>
+        <div class="calc-row"><span>مبلغ التطهير</span><span class="mono">120.00 EGP</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">عائلة وزن</p>
+        <h2>Wazn Screen هو البداية.</h2>
+      </div>
+      <div class="family">
+        <article class="card now"><img src="/assets/img/wazn-screen.svg" alt="Wazn Screen"><p>الفلترة الشرعية كـ API وMCP. <strong>قريبًا.</strong></p></article>
+        <article class="card"><img src="/assets/img/wazn-purify.svg" alt="Wazn Purify"><p>حساب التطهير والزكاة للمحافظ والتطبيقات.</p></article>
+        <article class="card"><img src="/assets/img/wazn-engine.svg" alt="Wazn Engine"><p>المحرك الكمي متعدد الاستراتيجيات على أسهم EGX33.</p></article>
+        <article class="card"><img src="/assets/img/wazn-agent.svg" alt="Wazn Agent"><p>Agent شرعي جاهز لشركات الوساطة.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap faq">
+      <div class="section-head"><p class="eyebrow">أسئلة</p><h2>قبل ما تسأل.</h2></div>
+      <details><summary>هل النتيجة دي فتوى؟</summary><p>لأ. Wazn Screen بيطبّق منهجية مؤشر EGX33 Shariah ومعيار AAOIFI رقم 21 على بيانات منشورة، وبيوريك الحسبة. والمسائل الخلافية مرجعها أهل العلم.</p></details>
+      <details><summary>هل بتقدّموا توصيات شراء أو بيع؟</summary><p>لأ. Wazn Screen أداة بيانات وفلترة، ومش بيقول تشتري إيه. ومفيش فيه أي صلاحية تداول.</p></details>
+      <details><summary>البيانات جاية منين؟</summary><p>مكوّنات EGX33 من مراجعات البورصة المصرية النصف سنوية، والنسب من القوائم المالية والإفصاحات المنشورة للشركات. وكل رد فيه المصدر وتاريخه.</p></details>
+      <details><summary>هل الكود مفتوح؟</summary><p>طبقة الفلترة هتتنشر مفتوحة المصدر على <a href="https://github.com/Wazn-Trade" rel="noopener">github.com/Wazn-Trade</a>، عشان أي حد يقدر يراجع المنطق بنفسه.</p></details>
+      <details><summary>إمتى الإطلاق؟</summary><p>إحنا في مرحلة البناء. سجّل في قائمة الانتظار، وهنبعتلك أول ما نفتح الوصول المبكر.</p></details>
+    </div>
+  </section>
+
+  <section id="join" class="join">
+    <div class="wrap">
+      <h2>عايز تجرّب أول واحد؟</h2>
+      <p class="lead">ابعتلنا إيميل، وقولنا إنت مطور ولا مستثمر ولا شركة. هنرد عليك بنفسنا.</p>
+      <div class="cta">
+        <a class="wz-btn wz-btn--primary" href="mailto:hello@wazn.trade?subject=Wazn%20Screen%20early%20access">hello@wazn.trade</a>
+        <a class="wz-btn wz-btn--secondary" href="https://github.com/Wazn-Trade" rel="noopener">تابع على GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="logo-light" src="/assets/img/wazn-logo-ar.svg" alt="وزن" width="112" height="28">
+    <img class="logo-dark" src="/assets/img/wazn-logo-ar-reverse.svg" alt="وزن" width="112" height="28">
+    <p class="disclaimer">وزن أداة بيانات وتحليل، ومش جهة إفتاء ولا مستشار استثمار مرخّص. المحتوى هنا لا يُعد توصية بشراء أو بيع أي ورقة مالية، والأداء السابق لا يضمن النتائج المستقبلية.</p>
+    <nav><a href="/en/" lang="en">English</a><a href="https://github.com/Wazn-Trade" rel="noopener">GitHub</a><a href="mailto:hello@wazn.trade">تواصل</a></nav>
+  </div>
+</footer>
+
+</body>
+</html>
