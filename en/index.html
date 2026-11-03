@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://wazn.trade/assets/img/og.png">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#0E1B2C">
+  <meta name="theme-color" content="#0A0A0A">
   <link rel="icon" href="/assets/img/wazn-favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.png" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -31,8 +31,8 @@
 <header class="nav">
   <div class="wrap">
     <a href="/en/" aria-label="Wazn home">
-      <img class="logo-light" src="/assets/img/wazn-logo-en.svg" alt="Wazn" width="120" height="30">
-      <img class="logo-dark" src="/assets/img/wazn-logo-en-reverse.svg" alt="Wazn" width="120" height="30">
+      <img class="logo-light" src="/assets/img/wazn-logo-en.svg" alt="Wazn" width="88" height="22">
+      <img class="logo-dark" src="/assets/img/wazn-logo-en-reverse.svg" alt="Wazn" width="88" height="22">
     </a>
     <ul>
       <li><a href="#why">Why</a></li>
@@ -42,24 +42,28 @@
     </ul>
     <div class="nav-end">
       <a class="lang" href="/" hreflang="ar" lang="ar">العربية</a>
-      <a class="wz-btn wz-btn--primary wz-btn--sm" href="#join">Join the waitlist</a>
+      <a class="wz-btn wz-btn--primary wz-btn--sm" href="#join">Join waitlist</a>
     </div>
   </div>
 </header>
 
 <main>
+
   <section class="hero">
     <div class="wrap">
-      <div>
-        <span class="pill">Coming soon · Early access</span>
-        <h1>Know if a stock is <em>compliant</em>.<br>With the evidence, not a promise.</h1>
-        <p class="lead">Wazn Screen screens Egyptian Exchange stocks against the <strong>EGX33 Shariah</strong> index and <strong>AAOIFI</strong> standards, and computes purification and zakat for you. Use it as an API, or as an MCP server inside Claude and any AI agent.</p>
-        <div class="cta">
-          <a class="wz-btn wz-btn--primary" href="#join">Join the waitlist</a>
-          <a class="wz-btn wz-btn--secondary" href="https://github.com/Wazn-Trade" rel="noopener">Code on GitHub</a>
-        </div>
+      <p class="eyebrow">Coming soon · Early access · Wazn Screen</p>
+      <h1>Know if a stock is <em>compliant</em>.<br>With the evidence, not a promise.</h1>
+      <p class="lead">Wazn Screen screens Egyptian Exchange stocks against the <strong>EGX33 Shariah</strong> index and <strong>AAOIFI</strong> standards, and computes purification and zakat for you. Use it as an API, or as an MCP server inside Claude and any AI agent.</p>
+      <div class="cta">
+        <a class="wz-btn wz-btn--primary" href="#join">Join the waitlist</a>
+        <a class="wz-btn wz-btn--secondary" href="https://github.com/Wazn-Trade" rel="noopener">Code on GitHub</a>
       </div>
+    </div>
+  </section>
 
+  <section class="example">
+    <div class="wrap">
+      <div class="meta">Example · 00</div>
       <div>
         <div class="result" role="img" aria-label="Example screening result">
           <div class="result-head">
@@ -81,24 +85,21 @@
 
   <section id="why">
     <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Why Wazn Screen</p>
-        <h2>A Sharia verdict on a stock should be auditable.</h2>
-        <p>Most compliance lists give you a yes or a no without saying why, when it was last updated, or against which standard. We show you the arithmetic.</p>
+      <div class="sect-head">
+        <span class="sect-no">01 — Why</span>
+        <h2 class="sect-title">A Sharia verdict should be auditable.</h2>
+        <p class="sect-lead">Most compliance lists give you a yes or a no without saying why, when it was last updated, or against which standard. We show you the arithmetic.</p>
       </div>
-      <div class="cards">
-        <article class="card">
-          <svg class="glyph" viewBox="0 0 40 40" aria-hidden="true"><rect class="i" x="6" y="14" width="6" height="12"/><rect class="i" x="17" y="6" width="6" height="20"/><rect class="i" x="28" y="10" width="6" height="16"/><rect class="b" x="3" y="26" width="34" height="3"/><path class="b" d="M20 29 L14 37 L26 37Z"/></svg>
+      <div class="reasons">
+        <article class="reason">
           <h3>Every verdict shows its reasons</h3>
           <p>The ratios, the limits, the page in the financial statements and the standard applied. No "trust us".</p>
         </article>
-        <article class="card">
-          <svg class="glyph" viewBox="0 0 40 40" aria-hidden="true"><rect class="i" x="4" y="6" width="32" height="3"/><rect class="i" x="4" y="18" width="32" height="3"/><rect class="i" x="4" y="30" width="20" height="3"/><rect class="b" x="28" y="26" width="8" height="11"/></svg>
+        <article class="reason">
           <h3>Correct on any date</h3>
           <p><span class="mono">point-in-time</span> data, refreshed with every semi-annual EGX33 review and every quarterly result. Ask: was this stock compliant on a given day?</p>
         </article>
-        <article class="card">
-          <svg class="glyph" viewBox="0 0 40 40" aria-hidden="true"><rect class="i" x="4" y="8" width="14" height="10"/><rect class="i" x="22" y="22" width="14" height="10"/><rect class="b" x="17" y="12" width="10" height="3"/><rect class="b" x="25" y="12" width="3" height="11"/></svg>
+        <article class="reason">
           <h3>Built for agents</h3>
           <p>A REST API for your app, and an MCP server that lets Claude or any AI agent screen your portfolio from the conversation.</p>
         </article>
@@ -106,12 +107,12 @@
     </div>
   </section>
 
-  <section id="how" class="band">
+  <section id="how">
     <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">How it works</p>
-        <h2>Three layers. A stock has to pass all of them.</h2>
-        <p>Any doubt in the data rejects the stock. When we are not sure, we fail closed; nothing passes by default.</p>
+      <div class="sect-head">
+        <span class="sect-no">02 — How it works</span>
+        <h2 class="sect-title">Three layers. A stock has to pass all of them.</h2>
+        <p class="sect-lead">Any doubt in the data rejects the stock. When we are not sure, we fail closed; nothing passes by default.</p>
       </div>
       <ol class="steps">
         <li><h3>EGX33 Shariah membership</h3><p>The stock must be in the index review in force on the date you ask about. If it drops out, it is marked Excluded immediately.</p></li>
@@ -122,21 +123,24 @@
   </section>
 
   <section id="dev">
-    <div class="wrap dev">
-      <div>
-        <p class="eyebrow">Developers</p>
-        <h2>One line in any agent.</h2>
-        <p class="lead">Add Wazn Screen as an MCP server in Claude Desktop, Claude Code or any MCP client, or call the REST API directly.</p>
-        <ul>
-          <li>Tools: <span class="mono">screen_stock</span>, <span class="mono">sharia_universe</span>, <span class="mono">purification_calc</span>, <span class="mono">zakat_calc</span></li>
-          <li>Every response carries <span class="mono">as_of</span>, <span class="mono">source</span> and <span class="mono">reasons</span></li>
-          <li>Read-only: no trading permissions, no buy recommendations</li>
-        </ul>
-        <p class="example-note" style="text-align:start">Preview: the planned API shape; still in development.</p>
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="sect-no">03 — Developers</span>
+        <h2 class="sect-title">One line in any agent.</h2>
       </div>
-      <div>
-        <div class="code">
-          <div class="code-head"><span>claude_desktop_config.json</span><span>MCP</span></div>
+      <div class="dev">
+        <div>
+          <p class="lead">Add Wazn Screen as an MCP server in Claude Desktop, Claude Code or any MCP client, or call the REST API directly.</p>
+          <ul>
+            <li>Tools: <span class="mono">screen_stock</span>, <span class="mono">sharia_universe</span>, <span class="mono">purification_calc</span>, <span class="mono">zakat_calc</span></li>
+            <li>Every response carries <span class="mono">as_of</span>, <span class="mono">source</span> and <span class="mono">reasons</span></li>
+            <li>Read-only: no trading permissions, no buy recommendations</li>
+          </ul>
+          <p class="example-note">Preview: the planned API shape; still in development.</p>
+        </div>
+        <div>
+          <div class="code">
+            <div class="code-head"><span>claude_desktop_config.json</span><span>MCP</span></div>
 <pre>{
   <span class="k">"mcpServers"</span>: {
     <span class="k">"wazn-screen"</span>: {
@@ -145,9 +149,9 @@
     }
   }
 }</pre>
-        </div>
-        <div class="code">
-          <div class="code-head"><span>REST</span><span>GET /v1/screen/{symbol}</span></div>
+          </div>
+          <div class="code">
+            <div class="code-head"><span>REST</span><span>GET /v1/screen/{symbol}</span></div>
 <pre><span class="c">$</span> curl https://api.wazn.trade/v1/screen/ACME
 
 {
@@ -160,31 +164,36 @@
   <span class="k">"as_of"</span>: <span class="s">"2026-11-03"</span>,
   <span class="k">"source"</span>: <span class="s">"EGX33 review H2 2026; Q3 2026 statements"</span>
 }</pre>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="wrap split">
-      <div>
-        <p class="eyebrow">Wazn Purify</p>
-        <h2>Purification and zakat, calculated, not guessed.</h2>
-        <p class="lead">Every dividend you receive gets its purification amount from the company's non-compliant income ratio, and your portfolio's zakat is computed on its due date. The method is written down and the standard you chose is recorded.</p>
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="sect-no">04 — Wazn Purify</span>
+        <h2 class="sect-title">Purification and zakat, calculated.</h2>
       </div>
-      <div class="calc" aria-label="Purification example">
-        <div class="calc-row"><span>Dividends received from ACME</span><span class="mono">10,000.00 EGP</span></div>
-        <div class="calc-row"><span>Non-compliant income ÷ total revenue</span><span class="mono">1.2%</span></div>
-        <div class="calc-row"><span>Purification amount</span><span class="mono">120.00 EGP</span></div>
+      <div class="split">
+        <div>
+          <p class="lead">Every dividend you receive gets its purification amount from the company's non-compliant income ratio, and your portfolio's zakat is computed on its due date. The method is written down and the standard you chose is recorded.</p>
+        </div>
+        <div class="calc" aria-label="Purification example">
+          <div class="calc-row"><span>Dividends received from ACME</span><span class="mono">10,000.00 EGP</span></div>
+          <div class="calc-row"><span>Non-compliant income ÷ total revenue</span><span class="mono">1.2%</span></div>
+          <div class="calc-row"><span>Purification amount</span><span class="mono">120.00 EGP</span></div>
+        </div>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">The Wazn family</p>
-        <h2>Wazn Screen is where it starts.</h2>
+      <div class="sect-head">
+        <span class="sect-no">05 — The Wazn family</span>
+        <h2 class="sect-title">Wazn Screen is where it starts.</h2>
       </div>
       <div class="family">
         <article class="card now"><img src="/assets/img/wazn-screen.svg" alt="Wazn Screen"><p>Sharia screening as an API and MCP server. <strong>Coming soon.</strong></p></article>
@@ -196,18 +205,24 @@
   </section>
 
   <section id="faq">
-    <div class="wrap faq">
-      <div class="section-head"><p class="eyebrow">FAQ</p><h2>Before you ask.</h2></div>
-      <details><summary>Is a result a fatwa?</summary><p>No. Wazn Screen applies the EGX33 Shariah index methodology and AAOIFI Standard No. 21 to published data and shows the arithmetic. Contested questions belong to qualified scholars.</p></details>
-      <details><summary>Do you give buy or sell recommendations?</summary><p>No. Wazn Screen is a data and screening tool. It never tells you what to buy and has no trading permissions.</p></details>
-      <details><summary>Where does the data come from?</summary><p>EGX33 membership from the Egyptian Exchange's semi-annual reviews; ratios from companies' published statements and disclosures. Every response cites its source and date.</p></details>
-      <details><summary>Is it open source?</summary><p>The screening layer will be published on <a href="https://github.com/Wazn-Trade" rel="noopener">github.com/Wazn-Trade</a> so anyone can audit the logic.</p></details>
-      <details><summary>When does it launch?</summary><p>We are building now. Join the waitlist and we will write as soon as early access opens.</p></details>
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="sect-no">06 — FAQ</span>
+        <h2 class="sect-title">Before you ask.</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Is a result a fatwa?</summary><p>No. Wazn Screen applies the EGX33 Shariah index methodology and AAOIFI Standard No. 21 to published data and shows the arithmetic. Contested questions belong to qualified scholars.</p></details>
+        <details><summary>Do you give buy or sell recommendations?</summary><p>No. Wazn Screen is a data and screening tool. It never tells you what to buy and has no trading permissions.</p></details>
+        <details><summary>Where does the data come from?</summary><p>EGX33 membership from the Egyptian Exchange's semi-annual reviews; ratios from companies' published statements and disclosures. Every response cites its source and date.</p></details>
+        <details><summary>Is it open source?</summary><p>The screening layer will be published on <a href="https://github.com/Wazn-Trade" rel="noopener">github.com/Wazn-Trade</a> so anyone can audit the logic.</p></details>
+        <details><summary>When does it launch?</summary><p>We are building now. Join the waitlist and we will write as soon as early access opens.</p></details>
+      </div>
     </div>
   </section>
 
   <section id="join" class="join">
     <div class="wrap">
+      <p class="eyebrow">Waitlist</p>
       <h2>Want to be first?</h2>
       <p class="lead">Email us and tell us whether you are a developer, an investor or a company. A human will reply.</p>
       <div class="cta">
@@ -216,12 +231,13 @@
       </div>
     </div>
   </section>
+
 </main>
 
 <footer>
   <div class="wrap">
-    <img class="logo-light" src="/assets/img/wazn-logo-en.svg" alt="Wazn" width="112" height="28">
-    <img class="logo-dark" src="/assets/img/wazn-logo-en-reverse.svg" alt="Wazn" width="112" height="28">
+    <img class="logo-light" src="/assets/img/wazn-logo-en.svg" alt="Wazn" width="88" height="22">
+    <img class="logo-dark" src="/assets/img/wazn-logo-en-reverse.svg" alt="Wazn" width="88" height="22">
     <p class="disclaimer">Wazn is a data and analysis tool, not a fatwa authority or a licensed investment adviser. Nothing here is a recommendation to buy or sell any security. Past performance does not guarantee future results.</p>
     <nav><a href="/" lang="ar">العربية</a><a href="https://github.com/Wazn-Trade" rel="noopener">GitHub</a><a href="mailto:hello@wazn.trade">Contact</a></nav>
   </div>
