@@ -33,5 +33,5 @@ python3 -m http.server 8080   # http://localhost:8080
 ## ملاحظات
 
 - **قائمة الانتظار** حاليًا لينك `mailto:hello@wazn.trade`، فلازم تفعّل Cloudflare Email Routing الأول (الخطوات في `setup/CLOUDFLARE.md`). ولما تحب تجمع الإيميلات في form، أبسط طريقة Cloudflare Pages Function مع D1.
-- كود الـ API والـ MCP اللي في الصفحة **Preview** ومكتوب عليه كده: `api.wazn.trade` والـ package `wazn-screen-mcp` لسه مش موجودين.
+- كود الـ API والـ MCP اللي في الصفحة **Preview**: `api.wazn.trade` لسه مش عايش، لكن المكتبة `wazn-screen` اتبنت تحت `wazn-screen/` ولسه مش منشورة على PyPI — snippet الـ `uvx` بيفترض النشر.
 - السهم `ACME` في الأمثلة وهمي. ما تحطش سهم حقيقي بحالة شرعية إلا لو جاية من الـ engine فعلًا.
