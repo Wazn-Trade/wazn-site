@@ -1,0 +1,19 @@
+{
+  "name": "@wazn/site",
+  "version": "0.1.0",
+  "description": "wazn.trade static site — consumes @wazn/brand and bundles its own CSS.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync-brand": "node scripts/sync-brand.mjs",
+    "bundle-css": "node scripts/bundle-css.mjs",
+    "build": "npm run sync-brand && npm run bundle-css",
+    "serve": "python3 -m http.server 8080"
+  },
+  "dependencies": {
+    "@wazn/brand": "^0.1.0"
+  },
+  "devDependencies": {
+    "lightningcss": "1.28.2"
+  }
+}

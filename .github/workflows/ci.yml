@@ -10,6 +10,47 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  build:
+    # Sync @wazn/brand into assets/css/, bundle tokens+site, then run every
+    # other gate off the artifact that the pages actually load.
+    name: Sync brand + bundle CSS
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@wazn"
+
+      - name: npm ci (reads @wazn/brand from GH Packages)
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm ci
+
+      - name: Sync brand CSS into assets/css/
+        run: npm run sync-brand
+
+      - name: Fail on drift (assets/css/ must match what npm ci produces)
+        # If a developer forgot to re-sync after bumping @wazn/brand, catch it here.
+        run: git diff --exit-code assets/css/tokens.css assets/css/components.css
+
+      - name: Bundle tokens.css + site.css -> bundle.css
+        run: npm run bundle-css
+
+      - name: Upload built artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wazn-site-built
+          path: |
+            .
+            !node_modules
+            !.git
+
   validate:
     name: HTML validation
     runs-on: ubuntu-latest
@@ -32,8 +73,6 @@ jobs:
       - name: lychee
         uses: lycheeverse/lychee-action@v2
         with:
-          # Skip the Preview-labelled wazn-screen/api.wazn.trade links (not live yet)
-          # and mailto links (not resolvable from CI). All other external links checked.
           args: >-
             --no-progress
             --exclude 'api\.wazn\.trade'
@@ -41,34 +80,27 @@ jobs:
             index.html en/index.html 404.html
           fail: true
 
-  tokens-drift:
-    name: Brand tokens drift (interim 0.19)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with: { path: wazn-site }
-
-      - name: Check out wazn-brand (read-only, for diffing)
-        uses: actions/checkout@v4
-        with:
-          repository: Wazn-Trade/wazn-brand
-          token: ${{ secrets.BRAND_READ_TOKEN }}
-          path: wazn-brand
-        continue-on-error: true
-
-      - name: Diff CSS against wazn-brand
-        if: ${{ hashFiles('wazn-brand/design-system/tokens.css') != '' }}
-        env:
-          BRAND_DIR: ${{ github.workspace }}/wazn-brand/design-system
-        run: bash wazn-site/scripts/check-tokens.sh
-
   a11y:
     name: pa11y (WCAG2AA)
     runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: read
+      packages: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: "20" }
+        with:
+          node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@wazn"
+
+      - name: npm ci + build
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm ci
+          npm run build
 
       - name: Serve site
         run: |

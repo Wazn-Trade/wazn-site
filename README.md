@@ -1,18 +1,36 @@
 # wazn-site
 
-موقع **wazn.trade**: صفحة Wazn Screen بالعربي (`/`) وبالإنجليزي (`/en/`). الموقع static بالكامل، من غير build step ولا JavaScript غير سطر واحد بيختار الثيم الفاتح أو الغامق حسب إعدادات جهاز الزائر.
+موقع **wazn.trade**: صفحة Wazn Screen بالعربي (`/`) وبالإنجليزي (`/en/`). الموقع static بالكامل، والـ build step الوحيد بيجيب الـ brand tokens من `@wazn/brand` وبيعمل bundle لملف واحد minified.
 
 ## التشغيل محليًا
 
 ```bash
+# Authenticate npm against GH Packages (one-off; needs read:packages).
+export GITHUB_TOKEN=ghp_…
+export NODE_AUTH_TOKEN="$GITHUB_TOKEN"
+
+npm ci                        # يجيب @wazn/brand
+npm run build                 # sync-brand + bundle-css
 python3 -m http.server 8080   # http://localhost:8080
+```
+
+خلال التطوير، `npm run sync-brand` بينسخ `tokens.css` و`components.css` من `node_modules/@wazn/brand/`. `npm run bundle-css` بيدمج `tokens + site` في `bundle.css` واحد minified (بـ lightningcss). الـ `components.css` بيفضل منفصل عشان أي منتج Wazn تاني يقدر يستخدمه من غير ما يجر layout الموقع معاه.
+
+لو مش شايف الـ `@wazn/brand` publish ده وعايز تشتغل محلي، استخدم:
+
+```bash
+npm install file:../wazn-brand
 ```
 
 ## النشر على Cloudflare Pages
 
 1. ارفع الفولدر ده كـ repo اسمه `wazn-site` على `github.com/Wazn-Trade`.
 2. في Cloudflare: Workers & Pages → Create → Pages → Connect to Git → اختار `Wazn-Trade/wazn-site`.
-3. الإعدادات: Framework preset = **None**، وBuild command = (فاضي)، وBuild output directory = `/`.
+3. الإعدادات:
+   - Framework preset: **None**
+   - Build command: `npm run build`
+   - Build output directory: `/`
+   - Environment variables: `NODE_AUTH_TOKEN` = PAT with `read:packages` scope on `Wazn-Trade` (ضروري عشان يقدر يجيب `@wazn/brand` من GH Packages)
 4. بعد أول deploy: Custom domains → ضيف `wazn.trade` و`www.wazn.trade`. الدومين على Cloudflare Registrar، فالـ DNS بيتظبط تلقائيًا.
 
 الخطوات بالتفصيل، ومعاها إعداد الإيميل `hello@wazn.trade`، في `../setup/CLOUDFLARE.md`.
@@ -26,8 +44,9 @@ python3 -m http.server 8080   # http://localhost:8080
 | `404.html` | Cloudflare Pages بيعرضها تلقائيًا لأي صفحة مش موجودة |
 | `_headers` | Security headers وcache لملفات الـ assets |
 | `robots.txt`، `sitemap.xml` | للـ SEO (بالروابط البديلة للغتين) |
-| `assets/css/tokens.css`، `components.css` | منسوخين من `wazn-brand`. لو اتغيروا هناك، انسخهم هنا تاني |
-| `assets/css/site.css` | تخطيط الصفحة |
+| `assets/css/tokens.css`، `components.css` | منسوخين تلقائيًا من `@wazn/brand` عن طريق `npm run sync-brand`. ما تعدلهمش هنا |
+| `assets/css/site.css` | تخطيط الصفحة (source of truth) |
+| `assets/css/bundle.css` | منتج `npm run bundle-css` — `tokens + site` مدموجين وmin — بيترفع مع Pages، مش مع git |
 | `assets/img/og.png` | الصورة اللي بتظهر لما اللينك يتشارك (1200×630) |
 
 ## ملاحظات
