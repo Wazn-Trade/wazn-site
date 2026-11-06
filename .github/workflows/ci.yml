@@ -30,8 +30,10 @@ jobs:
         with:
           node-version: "20"
 
-      - name: npm install @wazn-trade/brand from ../wazn-brand (CI only)
-        run: npm install --no-audit --no-fund --no-save file:./wazn-brand
+      - name: npm install (brand from sibling checkout, CI only)
+        run: |
+          npm pkg set 'dependencies.@wazn-trade/brand'='file:./wazn-brand'
+          npm install --no-audit --no-fund
 
       - name: Sync brand CSS into assets/css/
         run: npm run sync-brand
@@ -100,7 +102,8 @@ jobs:
 
       - name: npm install + build
         run: |
-          npm install --no-audit --no-fund --no-save file:./wazn-brand
+          npm pkg set 'dependencies.@wazn-trade/brand'='file:./wazn-brand'
+          npm install --no-audit --no-fund
           npm run build
 
       - name: Serve site
