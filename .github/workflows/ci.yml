@@ -27,10 +27,17 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
           scope: "@wazn-trade"
 
-      - name: npm ci (reads @wazn-trade/brand from GH Packages)
+      - name: npm install (reads @wazn-trade/brand from GH Packages)
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm ci
+        # package-lock.json is still deferred (TODO.md 0.24); fall back
+        # to `npm install` when the lockfile isn't yet committed.
+        run: |
+          if [[ -f package-lock.json ]]; then
+            npm ci
+          else
+            npm install --no-audit --no-fund
+          fi
 
       - name: Sync brand CSS into assets/css/
         run: npm run sync-brand
@@ -73,8 +80,10 @@ jobs:
       - name: lychee
         uses: lycheeverse/lychee-action@v2
         with:
+          # Serve from the repo root so root-relative /assets/… and /en/… resolve.
           args: >-
             --no-progress
+            --root-dir ${{ github.workspace }}
             --exclude 'api\.wazn\.trade'
             --exclude 'mailto:'
             index.html en/index.html 404.html
@@ -95,11 +104,15 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
           scope: "@wazn-trade"
 
-      - name: npm ci + build
+      - name: npm install + build
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm ci
+          if [[ -f package-lock.json ]]; then
+            npm ci
+          else
+            npm install --no-audit --no-fund
+          fi
           npm run build
 
       - name: Serve site
