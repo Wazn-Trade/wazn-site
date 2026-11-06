@@ -26,8 +26,20 @@
   <link rel="stylesheet" href="/assets/css/site.css">
   <script>try{var t=localStorage.getItem('wazn-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t;else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}catch(e){}</script>
   <script src="/assets/js/theme.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Wazn",
+    "alternateName": "وزن",
+    "url": "https://wazn.trade/",
+    "logo": "https://wazn.trade/assets/img/wazn-logo-en.svg",
+    "sameAs": ["https://github.com/Wazn-Trade"]
+  }
+  </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="nav">
   <div class="wrap">
@@ -52,7 +64,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
   <section class="hero">
     <div class="wrap">

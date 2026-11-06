@@ -35,3 +35,12 @@ python3 -m http.server 8080   # http://localhost:8080
 - **قائمة الانتظار** حاليًا لينك `mailto:hello@wazn.trade`، فلازم تفعّل Cloudflare Email Routing الأول (الخطوات في `setup/CLOUDFLARE.md`). ولما تحب تجمع الإيميلات في form، أبسط طريقة Cloudflare Pages Function مع D1.
 - كود الـ API والـ MCP اللي في الصفحة **Preview**: `api.wazn.trade` لسه مش عايش، لكن المكتبة `wazn-screen` اتبنت تحت `wazn-screen/` ولسه مش منشورة على PyPI — snippet الـ `uvx` بيفترض النشر.
 - السهم `ACME` في الأمثلة وهمي. ما تحطش سهم حقيقي بحالة شرعية إلا لو جاية من الـ engine فعلًا.
+
+## Accessibility
+
+- **Contrast audit (2026-11):** all text pairs in use meet WCAG AA (most AAA) on both themes. Full measured table in `wazn-brand/BRAND_BOOK.md` §4. Key site-level results:
+  - Body text (`ink` on `surface-0`): 18.88:1 light, 17.47:1 dark — AAA.
+  - Links / accents (`brass-text`): 7.50:1 light, 10.49:1 dark — AAA.
+  - Raw `brass` (3.11:1 light, 8.31:1 dark) is used only for fills, borders and 24px+ type, never body text. Verified in `assets/css/site.css`.
+- **Skip link:** `<a class="skip-link" href="#main">` on both `index.html` files, targeted to `<main id="main">`.
+- **Reduced motion:** `prefers-reduced-motion: reduce` zeros the motion-token durations (`--anim-*`) in `tokens.css`.

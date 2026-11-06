@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: HTML validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate HTML
+        run: npx --yes html-validate index.html en/index.html 404.html
+
+  # TODO (TODO.md item 0.19 interim, then 2.1): token-diff / npm sync check.
+  # TODO (TODO.md item 1.22): lychee broken-link, pa11y-ci / Lighthouse CI.
