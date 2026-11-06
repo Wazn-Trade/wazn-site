@@ -23,5 +23,65 @@ jobs:
       - name: Validate HTML
         run: npx --yes html-validate index.html en/index.html 404.html
 
-  # TODO (TODO.md item 0.19 interim, then 2.1): token-diff / npm sync check.
-  # TODO (TODO.md item 1.22): lychee broken-link, pa11y-ci / Lighthouse CI.
+  links:
+    name: Lychee link check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Skip the Preview-labelled wazn-screen/api.wazn.trade links (not live yet)
+          # and mailto links (not resolvable from CI). All other external links checked.
+          args: >-
+            --no-progress
+            --exclude 'api\.wazn\.trade'
+            --exclude 'mailto:'
+            index.html en/index.html 404.html
+          fail: true
+
+  tokens-drift:
+    name: Brand tokens drift (interim 0.19)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: wazn-site }
+
+      - name: Check out wazn-brand (read-only, for diffing)
+        uses: actions/checkout@v4
+        with:
+          repository: Wazn-Trade/wazn-brand
+          token: ${{ secrets.BRAND_READ_TOKEN }}
+          path: wazn-brand
+        continue-on-error: true
+
+      - name: Diff CSS against wazn-brand
+        if: ${{ hashFiles('wazn-brand/design-system/tokens.css') != '' }}
+        env:
+          BRAND_DIR: ${{ github.workspace }}/wazn-brand/design-system
+        run: bash wazn-site/scripts/check-tokens.sh
+
+  a11y:
+    name: pa11y (WCAG2AA)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+
+      - name: Serve site
+        run: |
+          python3 -m http.server 8080 &
+          sleep 1
+
+      - name: Install pa11y-ci
+        run: npm install -g pa11y-ci@3
+
+      - name: Run pa11y
+        run: >-
+          pa11y-ci
+          --standard WCAG2AA
+          http://localhost:8080/
+          http://localhost:8080/en/
+          http://localhost:8080/404.html
