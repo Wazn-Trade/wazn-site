@@ -115,9 +115,5 @@ jobs:
         run: npm install -g pa11y-ci@3
 
       - name: Run pa11y
-        run: >-
-          pa11y-ci
-          --standard WCAG2AA
-          http://localhost:8080/
-          http://localhost:8080/en/
-          http://localhost:8080/404.html
+        # URLs and standard come from .pa11yci.json so the CLI line stays tidy.
+        run: pa11y-ci
