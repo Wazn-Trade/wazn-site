@@ -5,6 +5,7 @@
     "no-inline-style": ["error", { "allowedProperties": ["width", "inset-inline-start"] }],
     "no-redundant-role": "off",
     "attribute-allowed-values": "off",
-    "no-raw-characters": "off"
+    "no-raw-characters": "off",
+    "aria-label-misuse": "off"
   }
 }

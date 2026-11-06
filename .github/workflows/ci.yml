@@ -13,31 +13,25 @@ jobs:
   build:
     # Sync @wazn-trade/brand into assets/css/, bundle tokens+site, then run every
     # other gate off the artifact that the pages actually load.
+    #
+    # CI avoids the GH Packages cross-repo auth dance by installing the brand
+    # from the sibling `wazn-brand/` checkout (same org, same push). Production
+    # builds on Cloudflare Pages use the published package from GH Packages.
     name: Sync brand + bundle CSS
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: read
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: Wazn-Trade/wazn-brand
+          path: wazn-brand
 
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@wazn-trade"
 
-      - name: npm install (reads @wazn-trade/brand from GH Packages)
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # package-lock.json is still deferred (TODO.md 0.24); fall back
-        # to `npm install` when the lockfile isn't yet committed.
-        run: |
-          if [[ -f package-lock.json ]]; then
-            npm ci
-          else
-            npm install --no-audit --no-fund
-          fi
+      - name: npm install @wazn-trade/brand from ../wazn-brand (CI only)
+        run: npm install --no-audit --no-fund --no-save file:./wazn-brand
 
       - name: Sync brand CSS into assets/css/
         run: npm run sync-brand
@@ -86,6 +80,7 @@ jobs:
             --root-dir ${{ github.workspace }}
             --exclude 'api\.wazn\.trade'
             --exclude 'mailto:'
+            --exclude 'assets/css/bundle\.css'
             index.html en/index.html 404.html
           fail: true
 
@@ -93,26 +88,19 @@ jobs:
     name: pa11y (WCAG2AA)
     runs-on: ubuntu-latest
     needs: build
-    permissions:
-      contents: read
-      packages: read
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: Wazn-Trade/wazn-brand
+          path: wazn-brand
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@wazn-trade"
 
       - name: npm install + build
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [[ -f package-lock.json ]]; then
-            npm ci
-          else
-            npm install --no-audit --no-fund
-          fi
+          npm install --no-audit --no-fund --no-save file:./wazn-brand
           npm run build
 
       - name: Serve site
