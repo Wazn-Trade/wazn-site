@@ -1,6 +1,6 @@
 # wazn-site
 
-موقع **wazn.trade**: صفحة Wazn Screen بالعربي (`/`) وبالإنجليزي (`/en/`). الموقع static بالكامل، والـ build step الوحيد بيجيب الـ brand tokens من `@wazn/brand` وبيعمل bundle لملف واحد minified.
+موقع **wazn.trade**: صفحة Wazn Screen بالعربي (`/`) وبالإنجليزي (`/en/`). الموقع static بالكامل، والـ build step الوحيد بيجيب الـ brand tokens من `@wazn-trade/brand` وبيعمل bundle لملف واحد minified.
 
 ## التشغيل محليًا
 
@@ -9,14 +9,14 @@
 export GITHUB_TOKEN=ghp_…
 export NODE_AUTH_TOKEN="$GITHUB_TOKEN"
 
-npm ci                        # يجيب @wazn/brand
+npm ci                        # يجيب @wazn-trade/brand
 npm run build                 # sync-brand + bundle-css
 python3 -m http.server 8080   # http://localhost:8080
 ```
 
-خلال التطوير، `npm run sync-brand` بينسخ `tokens.css` و`components.css` من `node_modules/@wazn/brand/`. `npm run bundle-css` بيدمج `tokens + site` في `bundle.css` واحد minified (بـ lightningcss). الـ `components.css` بيفضل منفصل عشان أي منتج Wazn تاني يقدر يستخدمه من غير ما يجر layout الموقع معاه.
+خلال التطوير، `npm run sync-brand` بينسخ `tokens.css` و`components.css` من `node_modules/@wazn-trade/brand/`. `npm run bundle-css` بيدمج `tokens + site` في `bundle.css` واحد minified (بـ lightningcss). الـ `components.css` بيفضل منفصل عشان أي منتج Wazn تاني يقدر يستخدمه من غير ما يجر layout الموقع معاه.
 
-لو مش شايف الـ `@wazn/brand` publish ده وعايز تشتغل محلي، استخدم:
+لو مش شايف الـ `@wazn-trade/brand` publish ده وعايز تشتغل محلي، استخدم:
 
 ```bash
 npm install file:../wazn-brand
@@ -30,7 +30,7 @@ npm install file:../wazn-brand
    - Framework preset: **None**
    - Build command: `npm run build`
    - Build output directory: `/`
-   - Environment variables: `NODE_AUTH_TOKEN` = PAT with `read:packages` scope on `Wazn-Trade` (ضروري عشان يقدر يجيب `@wazn/brand` من GH Packages)
+   - Environment variables: `NODE_AUTH_TOKEN` = PAT with `read:packages` scope on `Wazn-Trade` (ضروري عشان يقدر يجيب `@wazn-trade/brand` من GH Packages)
 4. بعد أول deploy: Custom domains → ضيف `wazn.trade` و`www.wazn.trade`. الدومين على Cloudflare Registrar، فالـ DNS بيتظبط تلقائيًا.
 
 الخطوات بالتفصيل، ومعاها إعداد الإيميل `hello@wazn.trade`، في `../setup/CLOUDFLARE.md`.
@@ -44,7 +44,7 @@ npm install file:../wazn-brand
 | `404.html` | Cloudflare Pages بيعرضها تلقائيًا لأي صفحة مش موجودة |
 | `_headers` | Security headers وcache لملفات الـ assets |
 | `robots.txt`، `sitemap.xml` | للـ SEO (بالروابط البديلة للغتين) |
-| `assets/css/tokens.css`، `components.css` | منسوخين تلقائيًا من `@wazn/brand` عن طريق `npm run sync-brand`. ما تعدلهمش هنا |
+| `assets/css/tokens.css`، `components.css` | منسوخين تلقائيًا من `@wazn-trade/brand` عن طريق `npm run sync-brand`. ما تعدلهمش هنا |
 | `assets/css/site.css` | تخطيط الصفحة (source of truth) |
 | `assets/css/bundle.css` | منتج `npm run bundle-css` — `tokens + site` مدموجين وmin — بيترفع مع Pages، مش مع git |
 | `assets/img/og.png` | الصورة اللي بتظهر لما اللينك يتشارك (1200×630) |

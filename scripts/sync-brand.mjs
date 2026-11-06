@@ -1,5 +1,5 @@
-// Copy brand CSS out of @wazn/brand into assets/css/ so the static pages can
-// reference it without resolving `node_modules/` at runtime. Pins are in
+// Copy brand CSS out of @wazn-trade/brand into assets/css/ so the static pages
+// can reference it without resolving `node_modules/` at runtime. Pins are in
 // package-lock.json; this script is a deterministic write, idempotent.
 //
 //   npm run sync-brand
@@ -18,10 +18,10 @@ const repoRoot = resolve(here, "..");
 const require = createRequire(import.meta.url);
 
 function resolveBrandFile(subpath) {
-  // package.json#exports gates what we can import from @wazn/brand.
+  // package.json#exports gates what we can import from @wazn-trade/brand.
   // Resolve each entry to its real path on disk via require.resolve so
   // the caller gets a clear error if the package isn't installed.
-  return require.resolve(`@wazn/brand/${subpath}`);
+  return require.resolve(`@wazn-trade/brand/${subpath}`);
 }
 
 const pairs = [

@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   build:
-    # Sync @wazn/brand into assets/css/, bundle tokens+site, then run every
+    # Sync @wazn-trade/brand into assets/css/, bundle tokens+site, then run every
     # other gate off the artifact that the pages actually load.
     name: Sync brand + bundle CSS
     runs-on: ubuntu-latest
@@ -25,9 +25,9 @@ jobs:
         with:
           node-version: "20"
           registry-url: "https://npm.pkg.github.com"
-          scope: "@wazn"
+          scope: "@wazn-trade"
 
-      - name: npm ci (reads @wazn/brand from GH Packages)
+      - name: npm ci (reads @wazn-trade/brand from GH Packages)
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm ci
@@ -36,7 +36,7 @@ jobs:
         run: npm run sync-brand
 
       - name: Fail on drift (assets/css/ must match what npm ci produces)
-        # If a developer forgot to re-sync after bumping @wazn/brand, catch it here.
+        # If a developer forgot to re-sync after bumping @wazn-trade/brand, catch it here.
         run: git diff --exit-code assets/css/tokens.css assets/css/components.css
 
       - name: Bundle tokens.css + site.css -> bundle.css
@@ -93,7 +93,7 @@ jobs:
         with:
           node-version: "20"
           registry-url: "https://npm.pkg.github.com"
-          scope: "@wazn"
+          scope: "@wazn-trade"
 
       - name: npm ci + build
         env:
