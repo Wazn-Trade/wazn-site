@@ -3,7 +3,10 @@
     "standard": "WCAG2AA",
     "timeout": 30000,
     "runners": ["htmlcs"],
-    "ignore": []
+    "ignore": [],
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox"]
+    }
   },
   "urls": [
     "http://localhost:8080/",
